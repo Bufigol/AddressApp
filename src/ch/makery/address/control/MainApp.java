@@ -26,7 +26,7 @@ public class MainApp extends Application {
 	private ObservableList<Person> personData = FXCollections.observableArrayList();
 
 	/**
-	 * Constructor
+	 * Constructor 
 	 */
 	public MainApp() {
 		// Add some sample data
