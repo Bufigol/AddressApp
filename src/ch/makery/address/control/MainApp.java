@@ -1,6 +1,8 @@
 package ch.makery.address.control;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.prefs.Preferences;
 
 import ch.makery.address.model.Person;
 import ch.makery.address.view.PersonEditDialogController;
@@ -83,7 +85,6 @@ public class MainApp extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch (IOException e) {
-			System.err.println("No entra");
 			e.printStackTrace();
 
 		}
@@ -133,6 +134,7 @@ public class MainApp extends Application {
 	        // Create the dialog Stage.
 	        Stage dialogStage = new Stage();
 	        dialogStage.setTitle("Edit Person");
+	        dialogStage.getIcons().add(new Image("file:resources/images/contact.png"));
 	        dialogStage.initModality(Modality.WINDOW_MODAL);
 	        dialogStage.initOwner(primaryStage);
 	        Scene scene = new Scene(page);
@@ -153,7 +155,43 @@ public class MainApp extends Application {
 	    }
 	}
 
+	/**
+	 * Returns the person file preference, i.e. the file that was last opened.
+	 * The preference is read from the OS specific registry. If no such
+	 * preference can be found, null is returned.
+	 *
+	 * @return
+	 */
+	public File getPersonFilePath() {
+	    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+	    String filePath = prefs.get("filePath", null);
+	    if (filePath != null) {
+	        return new File(filePath);
+	    } else {
+	        return null;
+	    }
+	}
 
+	/**
+	 * Sets the file path of the currently loaded file. The path is persisted in
+	 * the OS specific registry.
+	 *
+	 * @param file the file or null to remove the path
+	 */
+	public void setPersonFilePath(File file) {
+	    Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
+	    if (file != null) {
+	        prefs.put("filePath", file.getPath());
+
+	        // Update the stage title.
+	        primaryStage.setTitle("AddressApp - " + file.getName());
+	    } else {
+	        prefs.remove("filePath");
+
+	        // Update the stage title.
+	        primaryStage.setTitle("AddressApp");
+	    }
+	}
 
 
 
@@ -173,5 +211,3 @@ public class MainApp extends Application {
 }
 
 
-
-// Implementar punto del tutorial 3(final) Abriendo la ventana de diálogo
