@@ -1,5 +1,4 @@
 package ch.makery.address.control;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.prefs.Preferences;
