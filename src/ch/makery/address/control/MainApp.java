@@ -302,8 +302,6 @@ public class MainApp extends Application {
 
 
 
-
-
 	/**
 	 * Returns the main stage.
 	 *
