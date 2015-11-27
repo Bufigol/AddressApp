@@ -1,25 +1,26 @@
 .background {
     -fx-background-color: #1d1d1d;
+    -fx-background-image: url("../../../../../resources/images/paper3.png");
 }
 
 .label {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-opacity: 0.6;
 }
 
 .label-bright {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
 .label-header {
-    -fx-font-size: 32pt;
+    -fx-font-size: 30pt;
     -fx-font-family: "Segoe UI Light";
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-opacity: 1;
 }
 
@@ -98,7 +99,11 @@
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
-.button {
+
+
+/***
+ *
+ * /.button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #e2e2e2;
     -fx-border-width: 2;
@@ -109,9 +114,60 @@
     -fx-text-fill: #d8d8d8;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
+*/
+
+.buttonNew {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-image: url("../../../../../resources/images/icon_add.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: left;
+}
+.buttonNew:hover{
+
+	-fx-background-color: #f3f781;
+
+}
+
+
+
+.buttonEdit {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-image: url("../../../../../resources/images/editContact.png");
+  	-fx-background-repeat: no-repeat;
+  	-fx-background-position: left;
+
+
+}
+
+.buttonEdit:hover {
+
+-fx-background-color: #FCFCFC;
+
+
+}
+
+
+
 
 .button:hover {
-    -fx-background-color: #3a3a3a;
+    -fx-background-color: #F44336;
 }
 
 .button:pressed, .button:default:hover:pressed {

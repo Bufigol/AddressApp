@@ -97,6 +97,29 @@ public class RootLayoutController {
         }
     }
 
+
+
+    /**
+     * Opens the birthday statistics.
+     */
+    @FXML
+    private void handleShowBirthdayStatistics() {
+      mainApp.showBirthdayStatistics();
+    }
+
+
+    /**
+     * Opens the Graphical View
+     */
+    @FXML
+    private void handleGraphical(){
+    	mainApp.showGraphicalView();
+
+
+    }
+
+
+
     /**
      * Opens an about dialog.
      */
@@ -110,13 +133,6 @@ public class RootLayoutController {
     }
 
 
-    /**
-     * Opens the birthday statistics.
-     */
-    @FXML
-    private void handleShowBirthdayStatistics() {
-      mainApp.showBirthdayStatistics();
-    }
 
     /**
      * Closes the application.
