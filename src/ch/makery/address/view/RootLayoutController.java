@@ -118,6 +118,20 @@ public class RootLayoutController {
 
     }
 
+    @FXML
+    private void handleStyles1(){
+    	mainApp.ChangeStyle1();
+
+
+    }
+
+    @FXML
+    private void handleStyles2(){
+    	mainApp.ChangeStyle2();
+
+
+    }
+
 
 
     /**
@@ -128,7 +142,7 @@ public class RootLayoutController {
         Dialogs.create()
             .title("AddressApp")
             .masthead("About")
-            .message("Author: Marco Jakob\nWebsite: http://code.makery.ch")
+            .message("Author: Jmc\nWebsite: http://github.com")
             .showInformation();
     }
 

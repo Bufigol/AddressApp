@@ -2,6 +2,7 @@ package ch.makery.address.control;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.prefs.Preferences;
 
 import javax.xml.bind.JAXBContext;
@@ -122,6 +123,7 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/PersonOverview.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
+			// personOverview.getStylesheets().add("");
 
 			// Set person overview into the center of root layout.
 			rootLayout.setCenter(personOverview);
@@ -295,7 +297,7 @@ public class MainApp extends Application {
 
 	/**
 	 * =====================================================================
-	 * Added New methods
+	 * Added New Dialog
 	 *
 	 * Opens a dialog to show Graphical View.
 	 *
@@ -324,15 +326,62 @@ public class MainApp extends Application {
 	}
 
 	/**
+	 * =====================================================================
+	 * Added new Methods - Change Styles
+	 *
+	 * Change Stylesheet rootLayout to DarkTheme.css
+	 *
+	 */
+
+	public void ChangeStyle1() {
+
+		String style1 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme.css";
+
+		try {
+			rootLayout.getStylesheets().add((new File(style1)).toURI().toURL().toExternalForm());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * Change Stylesheet rootLayout to DarkTheme2.css
+	 */
+	public void ChangeStyle2() {
+
+		String style2 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme2.css";
+
+		try {
+			rootLayout.getStylesheets().add((new File(style2)).toURI().toURL().toExternalForm());
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	/**
+	 * END of ChageSyles
+	 * =====================================================================
+	 */
+
+
+
+	/**
+	 * =====================================================================
 	 * Returns the main stage.
 	 *
 	 * @return
 	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
+
 	}
 
 	public static void main(String[] args) {
 		launch(args);
 	}
+
 }

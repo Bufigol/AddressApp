@@ -4,9 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-
 import org.controlsfx.dialog.Dialogs;
-
 import ch.makery.address.control.MainApp;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
@@ -53,11 +51,12 @@ public class PersonOverviewController {
 		lastNameColumn.setCellValueFactory(cellData -> cellData.getValue().lastNameProperty());
 
 		// Clear person details.
-	    showPersonDetails(null);
+		showPersonDetails(null);
 
-	    // Listen for selection changes and show the person details when changed.
-	    personTable.getSelectionModel().selectedItemProperty().addListener(
-	            (observable, oldValue, newValue) -> showPersonDetails(newValue));
+		// Listen for selection changes and show the person details when
+		// changed.
+		personTable.getSelectionModel().selectedItemProperty()
+				.addListener((observable, oldValue, newValue) -> showPersonDetails(newValue));
 
 	}
 
@@ -73,35 +72,35 @@ public class PersonOverviewController {
 		personTable.setItems(mainApp.getPersonData());
 	}
 
-
 	/**
-	 * Fills all text fields to show details about the person.
-	 * If the specified person is null, all text fields are cleared.
+	 * Fills all text fields to show details about the person. If the specified
+	 * person is null, all text fields are cleared.
 	 *
-	 * @param person the person or null
+	 * @param person
+	 *            the person or null
 	 */
 	private void showPersonDetails(Person person) {
-	    if (person != null) {
-	        // Fill the labels with info from the person object.
-	        firstNameLabel.setText(person.getFirstName());
-	        lastNameLabel.setText(person.getLastName());
-	        streetLabel.setText(person.getStreet());
-	        postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
-	        cityLabel.setText(person.getCity());
-	        birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+		if (person != null) {
+			// Fill the labels with info from the person object.
+			firstNameLabel.setText(person.getFirstName());
+			lastNameLabel.setText(person.getLastName());
+			streetLabel.setText(person.getStreet());
+			postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+			cityLabel.setText(person.getCity());
+			birthdayLabel.setText(DateUtil.format(person.getBirthday()));
 
-	        // TODO: We need a way to convert the birthday into a String!
-	        // birthdayLabel.setText(...);
-	    } else {
-	        // Person is null, remove all the text.
-	        firstNameLabel.setText("");
-	        lastNameLabel.setText("");
-	        streetLabel.setText("");
-	        postalCodeLabel.setText("");
-	        cityLabel.setText("");
-	        birthdayLabel.setText("");
+			// TODO: We need a way to convert the birthday into a String!
+			// birthdayLabel.setText(...);
+		} else {
+			// Person is null, remove all the text.
+			firstNameLabel.setText("");
+			lastNameLabel.setText("");
+			streetLabel.setText("");
+			postalCodeLabel.setText("");
+			cityLabel.setText("");
+			birthdayLabel.setText("");
 
-	    }
+		}
 	}
 
 	/**
@@ -109,17 +108,14 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleDeletePerson() {
-	    int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-	    if (selectedIndex >= 0) {
-	        personTable.getItems().remove(selectedIndex);
-	    } else {
-	        // Nothing selected.
-	        Dialogs.create()
-	            .title("No Selection")
-	            .masthead("No Person Selected")
-	            .message("Please select a person in the table.")
-	            .showWarning();
-	    }
+		int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
+		if (selectedIndex >= 0) {
+			personTable.getItems().remove(selectedIndex);
+		} else {
+			// Nothing selected.
+			Dialogs.create().title("No Selection").masthead("No Person Selected")
+					.message("Please select a person in the table.").showWarning();
+		}
 	}
 
 	/**
@@ -128,11 +124,11 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleNewPerson() {
-	    Person tempPerson = new Person();
-	    boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
-	    if (okClicked) {
-	        mainApp.getPersonData().add(tempPerson);
-	    }
+		Person tempPerson = new Person();
+		boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
+		if (okClicked) {
+			mainApp.getPersonData().add(tempPerson);
+		}
 	}
 
 	/**
@@ -141,28 +137,26 @@ public class PersonOverviewController {
 	 */
 	@FXML
 	private void handleEditPerson() {
-	    Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
-	    if (selectedPerson != null) {
-	        boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
-	        if (okClicked) {
-	            showPersonDetails(selectedPerson);
-	        }
+		Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+		if (selectedPerson != null) {
+			boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
+			if (okClicked) {
+				showPersonDetails(selectedPerson);
+			}
 
-	    } else {
-	        // Nothing selected.
-	        Dialogs.create()
-	            .title("No Selection")
-	            .masthead("No Person Selected")
-	            .message("Please select a person in the table.")
-	            .showWarning();
-	    }
+		} else {
+			// Nothing selected.
+			Dialogs.create().title("No Selection").masthead("No Person Selected")
+					.message("Please select a person in the table.").showWarning();
+		}
 	}
 
+	@FXML
+	private void handleChangeStyle() {
 
+		Dialogs.create().title("Information Dialog").masthead(null).message("I have a great message for you!")
+				.showInformation();
 
-
-
+	}
 
 }
-
-
