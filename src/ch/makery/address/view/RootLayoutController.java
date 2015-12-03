@@ -97,17 +97,6 @@ public class RootLayoutController {
         }
     }
 
-    /**
-     * Opens an about dialog.
-     */
-    @FXML
-    private void handleAbout() {
-        Dialogs.create()
-            .title("AddressApp")
-            .masthead("About")
-            .message("Author: Marco Jakob\nWebsite: http://code.makery.ch")
-            .showInformation();
-    }
 
 
     /**
@@ -117,6 +106,47 @@ public class RootLayoutController {
     private void handleShowBirthdayStatistics() {
       mainApp.showBirthdayStatistics();
     }
+
+
+    /**
+     * Opens the Graphical View
+     */
+    @FXML
+    private void handleGraphical(){
+    	mainApp.showGraphicalView();
+
+
+    }
+
+    @FXML
+    private void handleStyles1(){
+    	mainApp.ChangeStyle1();
+
+
+    }
+
+    @FXML
+    private void handleStyles2(){
+    	mainApp.ChangeStyle2();
+
+
+    }
+
+
+
+    /**
+     * Opens an about dialog.
+     */
+    @FXML
+    private void handleAbout() {
+        Dialogs.create()
+            .title("AddressApp")
+            .masthead("About")
+            .message("Author: Jmc\nWebsite: http://github.com")
+            .showInformation();
+    }
+
+
 
     /**
      * Closes the application.
