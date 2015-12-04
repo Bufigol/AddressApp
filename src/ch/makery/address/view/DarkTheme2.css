@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: rgb(255,255,0);
+    -fx-background-color: rgb(255.0,255.0,0.0);
 
     -fx-background-image: url("../../../../../resources/images/bg_4.jpg");
     -fx-background-size: 100.0%,100.0%;
@@ -97,6 +97,20 @@
 .text-field {
     -fx-font-size: 12.0pt;
     -fx-font-family: "Segoe UI Semibold";
+}
+
+#txFldSearch{
+	-fx-font-size: 11pt;
+	-fx-text-fill: #d8d8d8;
+	-fx-border-style: solid;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-border-color: aqua ;
+    -fx-border-radius: 20px;
+    -fx-border-width: 1px;
+    -fx-background-radius: 20px;
+    -fx-background-color: derive(#1d1d1d,50.0%);
+
+
 }
 
 /*
@@ -203,7 +217,30 @@
 
 
 
+/*========================================================== */
+#ejemplo {
+  -fx-display-caret: inline-block;
+  -fx-max-height: 200.0px;
+  -fx-max-width: 200.0px;
+  -fx-background-image: url("../../../../../resources/images/delete.png"), url("../../../../../resources/images/delete.png"), url("../../../../../resources/images/editContact.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: -100.0px 0.0px, 100.0px 0.0px, 0.0 0.0; /*Si queremos que se "abra" horizontalmente: */
 
+ /* -fx-background-position: 0 -100px, 0 100px, 0 0;   y si queremos que se "abra" verticalmente:*/
+
+}
+/**
+ *
+ * Y la regla del hover sería:
+ * #ejemplo:hover {background-position: -200px 0px, 200px 0px, 0 0;}
+ * o bien:
+ * #ejemplo:hover {background-position: 0 -200px, 0 200px, 0 0;}
+ *
+ *
+ *
+ */
+
+#ejemplo:hover {-fx-background-position: -200px 0px, 200px 0px, 0 0;}
 
 /*------------------------------------------------- */
 

@@ -10,6 +10,8 @@ import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
 
 public class PersonOverviewController {
+	private Seeker buscador;
+	private String ruta_xml;
 	@FXML
 	private TableView<Person> personTable;
 	@FXML
@@ -17,6 +19,7 @@ public class PersonOverviewController {
 	@FXML
 	private TableColumn<Person, String> lastNameColumn;
 
+	// Etiquetas tabla izquierda
 	@FXML
 	private Label firstNameLabel;
 	@FXML
@@ -38,6 +41,7 @@ public class PersonOverviewController {
 	 * method.
 	 */
 	public PersonOverviewController() {
+		this.buscador = new Seeker();// para utilizar los metodos de Seeker
 	}
 
 	/**
@@ -104,6 +108,39 @@ public class PersonOverviewController {
 	}
 
 	/**
+	 *
+	 * Metodo de prueba de seteo del registro encontrado sobre vista Details
+	 *
+	 */
+	/*public void FindPerson(String entrada) {
+		Person person= this.buscador.buscar_persona(this.ruta_xml, entrada);
+		if (person != null) {
+			// Fill the labels with info from the person object.
+			firstNameLabel.setText(person.getFirstName());
+			lastNameLabel.setText(person.getLastName());
+			streetLabel.setText(person.getStreet());
+			postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
+			cityLabel.setText(person.getCity());
+			birthdayLabel.setText(DateUtil.format(person.getBirthday()));
+
+			// TODO: We need a way to convert the birthday into a String!
+			// birthdayLabel.setText(...);
+		} else {
+			// Person is null, remove all the text.
+			firstNameLabel.setText("");
+			lastNameLabel.setText("");
+			streetLabel.setText("");
+			postalCodeLabel.setText("");
+			cityLabel.setText("");
+			birthdayLabel.setText("");
+
+		}
+	}
+
+*/
+
+
+	/**
 	 * Called when the user clicks on the delete button.
 	 */
 	@FXML
@@ -157,6 +194,14 @@ public class PersonOverviewController {
 		Dialogs.create().title("Information Dialog").masthead(null).message("I have a great message for you!")
 				.showInformation();
 
+	}
+
+	public String getRuta_xml() {
+		return ruta_xml;
+	}
+
+	public void setRuta_xml(String ruta_xml) {
+		this.ruta_xml = ruta_xml;
 	}
 
 }

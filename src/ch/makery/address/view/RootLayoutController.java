@@ -3,11 +3,11 @@ package ch.makery.address.view;
 import java.io.File;
 
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
 import org.controlsfx.dialog.Dialogs;
 import ch.makery.address.control.MainApp;
-
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -18,141 +18,141 @@ import ch.makery.address.control.MainApp;
  */
 public class RootLayoutController {
 
-    // Reference to the main application
-    private MainApp mainApp;
+	// Reference to the main application
+	private MainApp mainApp;
 
-    /**
-     * Is called by the main application to give a reference back to itself.
-     *
-     * @param mainApp
-     */
-    public void setMainApp(MainApp mainApp) {
-        this.mainApp = mainApp;
-    }
+	/**
+	 * Is called by the main application to give a reference back to itself.
+	 *
+	 * @param mainApp
+	 */
+	public void setMainApp(MainApp mainApp) {
+		this.mainApp = mainApp;
+	}
 
-    /**
-     * Creates an empty address book.
-     */
-    @FXML
-    private void handleNew() {
-        mainApp.getPersonData().clear();
-        mainApp.setPersonFilePath(null);
-    }
+	/**
+	 * Creates an empty address book.
+	 */
+	@FXML
+	private void handleNew() {
+		mainApp.getPersonData().clear();
+		mainApp.setPersonFilePath(null);
+	}
 
-    /**
-     * Opens a FileChooser to let the user select an address book to load.
-     */
-    @FXML
-    private void handleOpen() {
-        FileChooser fileChooser = new FileChooser();
+	/**
+	 * Opens a FileChooser to let the user select an address book to load.
+	 */
+	@FXML
+	private void handleOpen() {
+		FileChooser fileChooser = new FileChooser();
 
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
+		// Set extension filter
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+		fileChooser.getExtensionFilters().add(extFilter);
 
-        // Show save file dialog
-        File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
+		// Show save file dialog
+		File file = fileChooser.showOpenDialog(mainApp.getPrimaryStage());
 
-        if (file != null) {
-            mainApp.loadPersonDataFromFile(file);
-        }
-    }
+		if (file != null) {
+			mainApp.loadPersonDataFromFile(file);
+		}
+	}
 
-    /**
-     * Saves the file to the person file that is currently open. If there is no
-     * open file, the "save as" dialog is shown.
-     */
-    @FXML
-    private void handleSave() {
-        File personFile = mainApp.getPersonFilePath();
-        if (personFile != null) {
-            mainApp.savePersonDataToFile(personFile);
-        } else {
-            handleSaveAs();
-        }
-    }
+	/**
+	 * Saves the file to the person file that is currently open. If there is no
+	 * open file, the "save as" dialog is shown.
+	 */
+	@FXML
+	private void handleSave() {
+		File personFile = mainApp.getPersonFilePath();
+		if (personFile != null) {
+			mainApp.savePersonDataToFile(personFile);
+		} else {
+			handleSaveAs();
+		}
+	}
 
-    /**
-     * Opens a FileChooser to let the user select a file to save to.
-     */
-    @FXML
-    private void handleSaveAs() {
-        FileChooser fileChooser = new FileChooser();
+	/**
+	 * Opens a FileChooser to let the user select a file to save to.
+	 */
+	@FXML
+	private void handleSaveAs() {
+		FileChooser fileChooser = new FileChooser();
 
-        // Set extension filter
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
-                "XML files (*.xml)", "*.xml");
-        fileChooser.getExtensionFilters().add(extFilter);
+		// Set extension filter
+		FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("XML files (*.xml)", "*.xml");
+		fileChooser.getExtensionFilters().add(extFilter);
 
-        // Show save file dialog
-        File file = fileChooser.showSaveDialog(mainApp.getPrimaryStage());
+		// Show save file dialog
+		File file = fileChooser.showSaveDialog(mainApp.getPrimaryStage());
 
-        if (file != null) {
-            // Make sure it has the correct extension
-            if (!file.getPath().endsWith(".xml")) {
-                file = new File(file.getPath() + ".xml");
-            }
-            mainApp.savePersonDataToFile(file);
-        }
-    }
+		if (file != null) {
+			// Make sure it has the correct extension
+			if (!file.getPath().endsWith(".xml")) {
+				file = new File(file.getPath() + ".xml");
+			}
+			mainApp.savePersonDataToFile(file);
+		}
+	}
 
+	/**
+	 * Opens the birthday statistics.
+	 */
+	@FXML
+	private void handleShowBirthdayStatistics() {
+		mainApp.showBirthdayStatistics();
+	}
 
+	/**
+	 * Opens the Graphical View
+	 */
+	@FXML
+	private void handleGraphical() {
+		mainApp.showGraphicalView();
 
-    /**
-     * Opens the birthday statistics.
-     */
-    @FXML
-    private void handleShowBirthdayStatistics() {
-      mainApp.showBirthdayStatistics();
-    }
+	}
 
+	@FXML
+	private void handleStyles1() {
+		mainApp.ChangeStyle1();
 
-    /**
-     * Opens the Graphical View
-     */
-    @FXML
-    private void handleGraphical(){
-    	mainApp.showGraphicalView();
+	}
 
+	@FXML
+	private void handleStyles2() {
+		mainApp.ChangeStyle2();
 
-    }
+	}
 
-    @FXML
-    private void handleStyles1(){
-    	mainApp.ChangeStyle1();
+	/**
+	 *
+	 * Listener del TextField Busqueda
+	 *
+	 */
+	/*@FXML
+	private void handleBusqueda(KeyEvent e) {
+		if (e.getCode().toString().equals("ENTER")) {
+			PersonOverviewController.FindPerson(mainApp.getPersonFilePath().toString(), texto_ingresado());
+		}
+	}
+	public String texto_ingresado(){
+		return "jose";
+	}
+*/
+	/**
+	 * Opens an about dialog.
+	 */
+	@FXML
+	private void handleAbout() {
+		Dialogs.create().title("AddressApp").masthead("About").message("Author: Jmc\nWebsite: http://github.com")
+				.showInformation();
+	}
 
-
-    }
-
-    @FXML
-    private void handleStyles2(){
-    	mainApp.ChangeStyle2();
-
-
-    }
-
-
-
-    /**
-     * Opens an about dialog.
-     */
-    @FXML
-    private void handleAbout() {
-        Dialogs.create()
-            .title("AddressApp")
-            .masthead("About")
-            .message("Author: Jmc\nWebsite: http://github.com")
-            .showInformation();
-    }
-
-
-
-    /**
-     * Closes the application.
-     */
-    @FXML
-    private void handleExit() {
-        System.exit(0);
-    }
+	/**
+	 * Closes the application.
+	 */
+	@FXML
+	private void handleExit() {
+		System.exit(0);
+	}
 }

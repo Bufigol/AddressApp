@@ -14,6 +14,7 @@ import org.controlsfx.dialog.Dialogs;
 import ch.makery.address.model.Person;
 import ch.makery.address.model.PersonListWrapper;
 import ch.makery.address.view.BirthdayStatisticsController;
+import ch.makery.address.view.GraphicalViewController;
 import ch.makery.address.view.PersonEditDialogController;
 import ch.makery.address.view.PersonOverviewController;
 import ch.makery.address.view.RootLayoutController;
@@ -32,6 +33,7 @@ public class MainApp extends Application {
 
 	private Stage primaryStage;
 	private BorderPane rootLayout;
+	private String ruta_xml;
 
 	// ... AFTER THE OTHER VARIABLES ...
 
@@ -113,8 +115,8 @@ public class MainApp extends Application {
 
 	/**
 	 * Shows the person overview inside the root layout.
-	 */
-	/**
+	 *
+	 *
 	 * Shows the person overview inside the root layout.
 	 */
 	public void showPersonOverview() {
@@ -123,13 +125,14 @@ public class MainApp extends Application {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(MainApp.class.getResource("../view/PersonOverview.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
-			// personOverview.getStylesheets().add("");
+
 
 			// Set person overview into the center of root layout.
 			rootLayout.setCenter(personOverview);
 
 			// Give the controller access to the main app.
 			PersonOverviewController controller = loader.getController();
+			controller.setRuta_xml(this.ruta_xml);
 			controller.setMainApp(this);
 
 		} catch (IOException e) {
@@ -187,6 +190,7 @@ public class MainApp extends Application {
 	public File getPersonFilePath() {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 		String filePath = prefs.get("filePath", null);
+		this.ruta_xml= filePath;
 		if (filePath != null) {
 			return new File(filePath);
 		} else {
@@ -305,25 +309,34 @@ public class MainApp extends Application {
 
 	public void showGraphicalView() {
 
-		try {
-			// Load the fxml file and create a new stage for the popup.
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
-			BorderPane page = (BorderPane) loader.load();
-			Stage dialogStage = new Stage();
-			dialogStage.setTitle("Graphical View");
-			dialogStage.initModality(Modality.WINDOW_MODAL);
-			dialogStage.initOwner(primaryStage);
-			Scene scene = new Scene(page);
-			dialogStage.setScene(scene);
+		GraphicalViewController gphControler = new GraphicalViewController();
+		gphControler.start(primaryStage);
 
-			dialogStage.show();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+
+
+
+//		try {
+//			// Load the fxml file and create a new stage for the popup.
+//			FXMLLoader loader = new FXMLLoader();
+//			loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
+//			AnchorPane page = (AnchorPane) loader.load();
+//			Stage dialogStage = new Stage();
+//			dialogStage.setTitle("Graphical View");
+//			dialogStage.initModality(Modality.WINDOW_MODAL);
+//			dialogStage.initOwner(primaryStage);
+//			Scene scene = new Scene(page);
+//			dialogStage.setScene(scene);
+//			dialogStage.show();
+//
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
+
+
 
 	/**
 	 * =====================================================================
@@ -334,6 +347,7 @@ public class MainApp extends Application {
 	 */
 
 	public void ChangeStyle1() {
+
 
 		String style1 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme.css";
 
@@ -366,6 +380,10 @@ public class MainApp extends Application {
 	 * END of ChageSyles
 	 * =====================================================================
 	 */
+
+
+
+
 
 
 
