@@ -16,11 +16,29 @@ import org.xml.sax.SAXException;
 import ch.makery.address.model.Person;
 import ch.makery.address.util.DateUtil;
 
+/**
+ *
+ * The Seeker class can locate a particular contact in the XML file. In the Test
+ * class is passed as parameter the contact to search.
+ *
+ * @author JoseManuel
+ *
+ */
 public class Seeker {
+
+	/**
+	 * Method to find a person in the XML file
+	 *
+	 * @param route
+	 *            File location
+	 * @param comparar
+	 *            Receives parameter from class test
+	 * @return salida It contains data found in the specified node
+	 */
 	public Person buscar_persona(String route, String comparar) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder builder;
-		Person salida= null;
+		Person salida = null;
 		try {
 			builder = factory.newDocumentBuilder();
 			Document document = builder.parse(new File(route));
@@ -41,7 +59,7 @@ public class Seeker {
 				if (comparar.equalsIgnoreCase(nombre)) {
 					find = true;
 					System.out.println("Nombre encontrado " + nombre);
-					salida= new Person(nombre,apellido);
+					salida = new Person(nombre, apellido);
 					salida.setStreet(getNodo("street", elemento));
 					salida.setPostalCode(Integer.parseInt(getNodo("postalCode", elemento)));
 					salida.setCity(getNodo("city", elemento));
@@ -63,6 +81,13 @@ public class Seeker {
 
 	}
 
+	/**
+	 * Method that accesses the specified node
+	 *
+	 * @param string
+	 * @param elemento
+	 * @return -> element
+	 */
 	private String getNodo(String string, Element elemento) {
 		// TODO Auto-generated method stub
 

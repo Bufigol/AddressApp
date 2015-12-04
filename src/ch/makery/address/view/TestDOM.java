@@ -1,5 +1,11 @@
 package ch.makery.address.view;
 
+/**
+ * Class Test to locate a contact. Call buscar_persona method from class Seeker
+ *
+ * @author JoseManuel
+ *
+ */
 public class TestDOM {
 
 	public static void main(String[] args) {

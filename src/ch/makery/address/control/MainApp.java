@@ -29,6 +29,14 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ *
+ *
+ * @author JoseManuel
+ * @author Felipe Andrés
+ * @version 1.0.0
+ */
+
 public class MainApp extends Application {
 
 	private Stage primaryStage;
@@ -126,7 +134,6 @@ public class MainApp extends Application {
 			loader.setLocation(MainApp.class.getResource("../view/PersonOverview.fxml"));
 			AnchorPane personOverview = (AnchorPane) loader.load();
 
-
 			// Set person overview into the center of root layout.
 			rootLayout.setCenter(personOverview);
 
@@ -185,12 +192,12 @@ public class MainApp extends Application {
 	 * The preference is read from the OS specific registry. If no such
 	 * preference can be found, null is returned.
 	 *
-	 * @return
+	 * @return File(filePath) or null If not can be found
 	 */
 	public File getPersonFilePath() {
 		Preferences prefs = Preferences.userNodeForPackage(MainApp.class);
 		String filePath = prefs.get("filePath", null);
-		this.ruta_xml= filePath;
+		this.ruta_xml = filePath;
 		if (filePath != null) {
 			return new File(filePath);
 		} else {
@@ -199,8 +206,8 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Sets the file path of the currently loaded file. The path is persisted in
-	 * the OS specific registry.
+	 * Method Sets the file path of the currently loaded file. The path is
+	 * persisted in the OS specific registry.
 	 *
 	 * @param file
 	 *            the file or null to remove the path
@@ -221,8 +228,8 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Loads person data from the specified file. The current person data will
-	 * be replaced.
+	 * Method to load person data from the specified file. The current person
+	 * data will be replaced.
 	 *
 	 * @param file
 	 */
@@ -247,7 +254,7 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Saves the current person data to the specified file.
+	 * Method to saves the current person data to the specified file.
 	 *
 	 * @param file
 	 */
@@ -273,7 +280,8 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Opens a dialog to show birthday statistics.
+	 * Method opens a dialog to show birthday statistics.
+	 *
 	 */
 	public void showBirthdayStatistics() {
 		try {
@@ -300,54 +308,40 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * =====================================================================
-	 * Added New Dialog
-	 *
-	 * Opens a dialog to show Graphical View.
+	 * Connection method with the Graphics class ViewController Load the new
+	 * dialog to show GraphicalView on primaryStage
 	 *
 	 */
-
 	public void showGraphicalView() {
 
 		GraphicalViewController gphControler = new GraphicalViewController();
 		gphControler.start(primaryStage);
 
-
-
-
-
-//		try {
-//			// Load the fxml file and create a new stage for the popup.
-//			FXMLLoader loader = new FXMLLoader();
-//			loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
-//			AnchorPane page = (AnchorPane) loader.load();
-//			Stage dialogStage = new Stage();
-//			dialogStage.setTitle("Graphical View");
-//			dialogStage.initModality(Modality.WINDOW_MODAL);
-//			dialogStage.initOwner(primaryStage);
-//			Scene scene = new Scene(page);
-//			dialogStage.setScene(scene);
-//			dialogStage.show();
-//
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		// try {
+		// // Load the fxml file and create a new stage for the popup.
+		// FXMLLoader loader = new FXMLLoader();
+		// loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
+		// AnchorPane page = (AnchorPane) loader.load();
+		// Stage dialogStage = new Stage();
+		// dialogStage.setTitle("Graphical View");
+		// dialogStage.initModality(Modality.WINDOW_MODAL);
+		// dialogStage.initOwner(primaryStage);
+		// Scene scene = new Scene(page);
+		// dialogStage.setScene(scene);
+		// dialogStage.show();
+		//
+		// } catch (IOException e) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
 
 	}
 
-
-
 	/**
-	 * =====================================================================
-	 * Added new Methods - Change Styles
-	 *
-	 * Change Stylesheet rootLayout to DarkTheme.css
+	 * Method to change the Stylesheet on rootLayout to DarkTheme.css
 	 *
 	 */
-
 	public void ChangeStyle1() {
-
 
 		String style1 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme.css";
 
@@ -361,7 +355,8 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Change Stylesheet rootLayout to DarkTheme2.css
+	 * Method to change the Stylesheet on rootLayout to DarkTheme2.css
+	 *
 	 */
 	public void ChangeStyle2() {
 
@@ -377,27 +372,20 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * END of ChageSyles
-	 * =====================================================================
-	 */
-
-
-
-
-
-
-
-	/**
-	 * =====================================================================
-	 * Returns the main stage.
+	 * Method getPrimaryStage
 	 *
-	 * @return
+	 * @return the primaryStage
 	 */
 	public Stage getPrimaryStage() {
 		return primaryStage;
 
 	}
 
+	/**
+	 * Main method that receives as argument a string
+	 *
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

@@ -107,37 +107,6 @@ public class PersonOverviewController {
 		}
 	}
 
-	/**
-	 *
-	 * Metodo de prueba de seteo del registro encontrado sobre vista Details
-	 *
-	 */
-	/*public void FindPerson(String entrada) {
-		Person person= this.buscador.buscar_persona(this.ruta_xml, entrada);
-		if (person != null) {
-			// Fill the labels with info from the person object.
-			firstNameLabel.setText(person.getFirstName());
-			lastNameLabel.setText(person.getLastName());
-			streetLabel.setText(person.getStreet());
-			postalCodeLabel.setText(Integer.toString(person.getPostalCode()));
-			cityLabel.setText(person.getCity());
-			birthdayLabel.setText(DateUtil.format(person.getBirthday()));
-
-			// TODO: We need a way to convert the birthday into a String!
-			// birthdayLabel.setText(...);
-		} else {
-			// Person is null, remove all the text.
-			firstNameLabel.setText("");
-			lastNameLabel.setText("");
-			streetLabel.setText("");
-			postalCodeLabel.setText("");
-			cityLabel.setText("");
-			birthdayLabel.setText("");
-
-		}
-	}
-
-*/
 
 
 	/**

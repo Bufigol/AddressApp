@@ -12,7 +12,6 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
-
 /**
  * Model class for a Person.
  *
@@ -27,17 +26,15 @@ public class Person {
 	private final StringProperty city;
 	private final ObjectProperty<LocalDate> birthday;
 
-
-
 	/**
-	 * Default constructor.
+	 * Default constructor of Person
 	 */
 	public Person() {
 		this(null, null);
 	}
 
 	/**
-	 * Constructor with some initial data.
+	 * Constructor of Person with some initial data.
 	 *
 	 * @param firstName
 	 * @param lastName
@@ -52,26 +49,50 @@ public class Person {
 		this.city = new SimpleStringProperty("some city");
 		this.birthday = new SimpleObjectProperty<LocalDate>(LocalDate.of(1999, 2, 21));
 
-
-
 	}
 
+	/**
+	 * Method Getter of firstName
+	 *
+	 * @return firstName
+	 */
 	public String getFirstName() {
 		return firstName.get();
 	}
 
+	/**
+	 * Method Setter of firstName
+	 *
+	 * @param firstName
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName.set(firstName);
 	}
 
+	/**
+	 *
+	 * Method firstNameProperty
+	 *
+	 * @return firstName
+	 */
 	public StringProperty firstNameProperty() {
 		return firstName;
 	}
 
+	/**
+	 * Method to get lastName
+	 *
+	 * @return lastName
+	 */
 	public String getLastName() {
 		return lastName.get();
 	}
 
+	/**
+	 * Method to set lastName
+	 *
+	 * @param lastName
+	 */
 	public void setLastName(String lastName) {
 		this.lastName.set(lastName);
 	}
@@ -80,38 +101,83 @@ public class Person {
 		return lastName;
 	}
 
+	/**
+	 * Method to get lastName
+	 *
+	 * @return street
+	 */
 	public String getStreet() {
 		return street.get();
 	}
 
+	/**
+	 * Method to set street
+	 *
+	 * @param street
+	 */
 	public void setStreet(String street) {
 		this.street.set(street);
 	}
 
+	/**
+	 * Method streetProperty
+	 *
+	 * @return street
+	 */
 	public StringProperty streetProperty() {
 		return street;
 	}
 
+	/**
+	 * Method to get PostalCode
+	 *
+	 * @return postalCode
+	 */
 	public int getPostalCode() {
 		return postalCode.get();
 	}
 
+	/**
+	 * Method to set PostalCode
+	 *
+	 * @param postalCode
+	 */
 	public void setPostalCode(int postalCode) {
 		this.postalCode.set(postalCode);
 	}
 
+	/**
+	 * Method postalCodeProperty
+	 *
+	 * @return postalCode
+	 */
 	public IntegerProperty postalCodeProperty() {
 		return postalCode;
 	}
 
+	/**
+	 * Method to get city
+	 *
+	 * @return city
+	 */
 	public String getCity() {
 		return city.get();
 	}
 
+	/**
+	 * Method to set city
+	 *
+	 * @return city
+	 */
 	public void setCity(String city) {
 		this.city.set(city);
 	}
 
+	/**
+	 * Method cityProperty
+	 *
+	 * @return city
+	 */
 	public StringProperty cityProperty() {
 		return city;
 	}
@@ -128,8 +194,5 @@ public class Person {
 	public ObjectProperty<LocalDate> birthdayProperty() {
 		return birthday;
 	}
-
-
-
 
 }
