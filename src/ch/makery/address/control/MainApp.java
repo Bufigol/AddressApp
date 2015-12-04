@@ -30,7 +30,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- *
+ * Main class that extends from class Applications
  *
  * @author JoseManuel
  * @author Felipe Andrés
