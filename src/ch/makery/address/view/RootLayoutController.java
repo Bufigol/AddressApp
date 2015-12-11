@@ -13,6 +13,8 @@ import javafx.stage.FileChooser;
 import org.controlsfx.dialog.Dialogs;
 import ch.makery.address.control.MainApp;
 import ch.makery.address.model.Person;
+import ch.makery.address.view.PersonOverviewController;
+
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -25,6 +27,9 @@ public class RootLayoutController {
 
 	// Reference to the main application
 	private MainApp mainApp;
+	private PersonOverviewController personOverView;
+
+
 	@FXML
 	private TextField campo_busqueda;
 
@@ -164,8 +169,9 @@ public class RootLayoutController {
 	}
 
 	private void mostrar(Person person) {
-		this.mainApp.showPersonEditDialog(person);
-
+	//	this.mainApp.showPersonEditDialog(person);
+	//  this.personOverView.showPersonDetails(person);
+		this.mainApp.showPersonOverviewFound(person);
 	}
 
 	/**

@@ -148,6 +148,35 @@ public class MainApp extends Application {
 	}
 
 	/**
+	 * Shows the person searched an found on overview inside the root
+	 * layout.
+	 *
+	 * @param person
+	 *
+	 *
+	 */
+	public void showPersonOverviewFound(Person person) {
+		try {
+			// Load person overview.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("../view/PersonOverview.fxml"));
+			AnchorPane personOverview = (AnchorPane) loader.load();
+
+			// Set person overview into the center of root layout.
+			rootLayout.setCenter(personOverview);
+
+			// Give the controller access to the main app.
+			PersonOverviewController controller = loader.getController();
+			controller.setRuta_xml(this.ruta_xml);
+			controller.setMainApp(this);
+			controller.showPersonDetails(person);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
 	 * Opens a dialog to edit details for the specified person. If the user
 	 * clicks OK, the changes are saved into the provided person object and true
 	 * is returned.

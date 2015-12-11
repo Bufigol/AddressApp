@@ -83,7 +83,7 @@ public class PersonOverviewController {
 	 * @param person
 	 *            the person or null
 	 */
-	private void showPersonDetails(Person person) {
+	public void showPersonDetails(Person person) {
 		if (person != null) {
 			// Fill the labels with info from the person object.
 			firstNameLabel.setText(person.getFirstName());
@@ -160,7 +160,7 @@ public class PersonOverviewController {
 	@FXML
 	private void handleChangeStyle() {
 
-		Dialogs.create().title("Information Dialog").masthead(null).message("I have a great message for you!")
+		Dialogs.create().title("Information Dialog").masthead(null).message("Check the diferents Styles")
 				.showInformation();
 
 	}
