@@ -140,7 +140,6 @@ public class RootLayoutController {
 	public void handleBusqueda() {
 		ObservableList<Person> lista_personas = this.mainApp.getPersonData();
 		String texto_ingresado = this.campo_busqueda.getText();
-
 		this.campo_busqueda.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent ke) {
@@ -152,15 +151,21 @@ public class RootLayoutController {
 								+ lista_personas.get(contador).getLastName();
 						comparador = comparador.toLowerCase();
 						if (comparador.contains(texto_ingresado)) {
-							System.out.println(lista_personas.get(contador).getFirstName() + " "
-									+ lista_personas.get(contador).getLastName());
+							mostrar(lista_personas.get(contador));
 							encontrado = true;
 						}
 						contador++;
 					}
 				}
 			}
+
 		});
+
+	}
+
+	private void mostrar(Person person) {
+		this.mainApp.showPersonEditDialog(person);
+
 	}
 
 	/**
