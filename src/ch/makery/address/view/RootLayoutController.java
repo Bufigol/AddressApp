@@ -2,6 +2,7 @@ package ch.makery.address.view;
 
 import java.io.File;
 
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -11,6 +12,7 @@ import javafx.stage.FileChooser;
 
 import org.controlsfx.dialog.Dialogs;
 import ch.makery.address.control.MainApp;
+import ch.makery.address.model.Person;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -136,19 +138,29 @@ public class RootLayoutController {
 	 */
 	@FXML
 	public void handleBusqueda() {
-		TextField paso = this.campo_busqueda;
-		paso.setOnKeyPressed(new EventHandler<KeyEvent>() {
+		ObservableList<Person> lista_personas = this.mainApp.getPersonData();
+		String texto_ingresado = this.campo_busqueda.getText();
+
+		this.campo_busqueda.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
 			public void handle(KeyEvent ke) {
 				if (ke.getCode().equals(KeyCode.ENTER)) {
-					System.out.println("Se presiono enter");
+					int contador = 0;
+					boolean encontrado = false;
+					while ((!encontrado) && (contador < lista_personas.size())) {
+						String comparador = lista_personas.get(contador).getFirstName()
+								+ lista_personas.get(contador).getLastName();
+						comparador = comparador.toLowerCase();
+						if (comparador.contains(texto_ingresado)) {
+							System.out.println(lista_personas.get(contador).getFirstName() + " "
+									+ lista_personas.get(contador).getLastName());
+							encontrado = true;
+						}
+						contador++;
+					}
 				}
 			}
 		});
-	}
-
-	public String texto_ingresado() {
-		return "jose";
 	}
 
 	/**
