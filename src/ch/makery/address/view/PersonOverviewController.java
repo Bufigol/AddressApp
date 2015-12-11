@@ -160,7 +160,7 @@ public class PersonOverviewController {
 	@FXML
 	private void handleChangeStyle() {
 
-		Dialogs.create().title("Information Dialog").masthead(null).message("Check the diferents Styles")
+		Dialogs.create().title("Information Dialog").masthead(null).message("Check the diferents Styles on Styles section in the menuBar")
 				.showInformation();
 
 	}

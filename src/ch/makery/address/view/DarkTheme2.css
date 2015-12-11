@@ -32,7 +32,8 @@
 .table-view {
     -fx-base: #1d1d1d;
     -fx-control-inner-background: #1d1d1d;
-    -fx-background-color: #1d1d1d;
+    -fx-background-color: rgb(128,128,255);
+/*  -fx-background-color: #1d1d1d; */
 /*  -fx-table-cell-border-color: transparent;
     -fx-table-header-border-color: transparent;*/
     -fx-padding: 5.0;
@@ -91,7 +92,8 @@
 }
 
 .menu .left-container {
-    -fx-background-color: black;
+	-fx-background-color: black;
+/*  -fx-background-color: rgb(128,128,255); */
 }
 
 .text-field {

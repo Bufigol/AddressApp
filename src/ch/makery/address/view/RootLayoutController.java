@@ -14,7 +14,7 @@ import org.controlsfx.dialog.Dialogs;
 import ch.makery.address.control.MainApp;
 import ch.makery.address.model.Person;
 import ch.makery.address.view.PersonOverviewController;
-
+import ch.makery.address.view.GraphicalViewController;
 
 /**
  * The controller for the root layout. The root layout provides the basic
@@ -28,7 +28,7 @@ public class RootLayoutController {
 	// Reference to the main application
 	private MainApp mainApp;
 	private PersonOverviewController personOverView;
-
+	private GraphicalViewController graphicCircle;
 
 	@FXML
 	private TextField campo_busqueda;
@@ -40,6 +40,7 @@ public class RootLayoutController {
 	 */
 	public void setMainApp(MainApp mainApp) {
 		this.mainApp = mainApp;
+
 	}
 
 	/**
@@ -121,6 +122,7 @@ public class RootLayoutController {
 	@FXML
 	private void handleGraphical() {
 		mainApp.showGraphicalView();
+	//	graphicCircle.start(graphicCircle);
 
 	}
 
@@ -168,9 +170,16 @@ public class RootLayoutController {
 
 	}
 
+	/**
+	 * The person requested is passed as a parameter and is received by
+	 * showPersonOverviewFound(parameter).
+	 *
+	 *
+	 * @param person
+	 */
 	private void mostrar(Person person) {
-	//	this.mainApp.showPersonEditDialog(person);
-	//  this.personOverView.showPersonDetails(person);
+		// this.mainApp.showPersonEditDialog(person);
+		// this.personOverView.showPersonDetails(person);
 		this.mainApp.showPersonOverviewFound(person);
 	}
 
@@ -179,7 +188,7 @@ public class RootLayoutController {
 	 */
 	@FXML
 	private void handleAbout() {
-		Dialogs.create().title("AddressApp").masthead("About").message("Author: Jmc\nWebsite: http://github.com")
+		Dialogs.create().title("AddressApp").masthead("About").message("Authors: Felipe Vásquez & Jose Manuel Calvo\nWebsite: https://github.com/Bufigol/AddressApp.git")
 				.showInformation();
 	}
 

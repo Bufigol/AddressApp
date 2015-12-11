@@ -148,7 +148,7 @@ public class MainApp extends Application {
 	}
 
 	/**
-	 * Shows the person searched an found on overview inside the root
+	 * Shows the person searched and found on overview inside the root
 	 * layout.
 	 *
 	 * @param person
@@ -349,7 +349,7 @@ public class MainApp extends Application {
 		try {
 			// Load the fxml file and create a new stage for the popup.
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
+		 	loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
 			AnchorPane page = (AnchorPane) loader.load();
 			Stage dialogStage = new Stage();
 			dialogStage.setTitle("Graphical View");
