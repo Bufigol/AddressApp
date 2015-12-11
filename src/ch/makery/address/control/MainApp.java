@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  * Main class that extends from class Applications
  *
  * @author JoseManuel
- * @author Felipe Andrés
+ * @author Felipe AndrÃ©s
  * @version 1.0.0
  */
 
@@ -317,23 +317,23 @@ public class MainApp extends Application {
 		GraphicalViewController gphControler = new GraphicalViewController();
 		gphControler.start(primaryStage);
 
-		// try {
-		// // Load the fxml file and create a new stage for the popup.
-		// FXMLLoader loader = new FXMLLoader();
-		// loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
-		// AnchorPane page = (AnchorPane) loader.load();
-		// Stage dialogStage = new Stage();
-		// dialogStage.setTitle("Graphical View");
-		// dialogStage.initModality(Modality.WINDOW_MODAL);
-		// dialogStage.initOwner(primaryStage);
-		// Scene scene = new Scene(page);
-		// dialogStage.setScene(scene);
-		// dialogStage.show();
-		//
-		// } catch (IOException e) {
-		// // TODO Auto-generated catch block
-		// e.printStackTrace();
-		// }
+		try {
+			// Load the fxml file and create a new stage for the popup.
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(MainApp.class.getResource("../view/GraphicalView.fxml"));
+			AnchorPane page = (AnchorPane) loader.load();
+			Stage dialogStage = new Stage();
+			dialogStage.setTitle("Graphical View");
+			dialogStage.initModality(Modality.WINDOW_MODAL);
+			dialogStage.initOwner(primaryStage);
+			Scene scene = new Scene(page);
+			dialogStage.setScene(scene);
+			dialogStage.show();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
@@ -342,8 +342,7 @@ public class MainApp extends Application {
 	 *
 	 */
 	public void ChangeStyle1() {
-
-		String style1 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme.css";
+		String style1 = "..\\AddressApp\\src\\ch\\makery\\address\\view\\DarkTheme.css";
 
 		try {
 			rootLayout.getStylesheets().add((new File(style1)).toURI().toURL().toExternalForm());
@@ -359,8 +358,7 @@ public class MainApp extends Application {
 	 *
 	 */
 	public void ChangeStyle2() {
-
-		String style2 = "C:/Users/JoseManuel/git/AddressApp/src/ch/makery/address/view/DarkTheme2.css";
+		String style2 = "..\\AddressApp\\src\\ch\\makery\\address\\view\\DarkTheme2.css";
 
 		try {
 			rootLayout.getStylesheets().add((new File(style2)).toURI().toURL().toExternalForm());
