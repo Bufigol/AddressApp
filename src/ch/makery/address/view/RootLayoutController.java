@@ -2,7 +2,10 @@ package ch.makery.address.view;
 
 import java.io.File;
 
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.FileChooser;
 
@@ -20,6 +23,8 @@ public class RootLayoutController {
 
 	// Reference to the main application
 	private MainApp mainApp;
+	@FXML
+	private TextField campo_busqueda;
 
 	/**
 	 * Is called by the main application to give a reference back to itself.
@@ -129,16 +134,23 @@ public class RootLayoutController {
 	 * Listener del TextField Busqueda
 	 *
 	 */
-	/*@FXML
-	private void handleBusqueda(KeyEvent e) {
-		if (e.getCode().toString().equals("ENTER")) {
-			PersonOverviewController.FindPerson(mainApp.getPersonFilePath().toString(), texto_ingresado());
-		}
+	@FXML
+	public void handleBusqueda() {
+		TextField paso = this.campo_busqueda;
+		paso.setOnKeyPressed(new EventHandler<KeyEvent>() {
+			@Override
+			public void handle(KeyEvent ke) {
+				if (ke.getCode().equals(KeyCode.ENTER)) {
+					System.out.println("Se presiono enter");
+				}
+			}
+		});
 	}
-	public String texto_ingresado(){
+
+	public String texto_ingresado() {
 		return "jose";
 	}
-*/
+
 	/**
 	 * Opens an about dialog.
 	 */
